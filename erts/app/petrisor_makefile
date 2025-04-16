@@ -1,0 +1,16 @@
+TARGET = petrisor
+
+all: $(TARGET) clean print
+
+$(TARGET): petrisor_main.o  ../lib/activity_library.a ../lib/time_library.a
+	gcc -g -Wall -pthread  $^ -o $@  -lm
+	
+	
+petrisor_main.o: petrisor_main.c
+	gcc -c $< -o $@
+     
+clean:
+	rm -f *.o
+
+print:
+	@echo "to run: ./petrisor"

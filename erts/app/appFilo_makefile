@@ -1,0 +1,16 @@
+TARGET = appFilo
+
+all: $(TARGET) clean print
+
+$(TARGET): appFilo_main.o  ../lib/activity_library.a ../lib/time_library.a
+	gcc -g -Wall -pthread  $^ -o $@  -lm
+	
+	
+app12_main.o: appFilo_main.c
+	gcc -c $< -o $@
+     
+clean:
+	rm -f *.o
+
+print:
+	@echo "to run: ./appFilo"

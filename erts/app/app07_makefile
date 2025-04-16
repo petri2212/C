@@ -1,0 +1,17 @@
+TARGET = app07
+
+all: $(TARGET) clean print
+
+$(TARGET): app07_main.o
+	gcc -g -Wall -pthread  $^ -o $@  -lm
+	
+	
+app07_main.o: app07_main.c
+	gcc -c $< -o $@
+     
+clean:
+	rm -f *.o
+
+print:
+	@echo "to run: ./app07 <sleep1, sleep2>"
+
